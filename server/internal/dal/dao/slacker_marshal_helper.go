@@ -12,4 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package staffdispatch
+package dao
+
+// SlackMap is the map of slack writer and used for struct unmarshal
+type SlackMap struct {
+	StaffID        string `json:"staff_id"`
+	SlackChannelID string `json:"slack_channel_id"`
+	// SlackBotContext used to store the slack context, and use NewResponse to get writer.
+}
+
+// NewSlackMap returns a new SlackMap
+func NewSlackMap(staffID, slackChannelID string) *SlackMap {
+	return &SlackMap{
+		StaffID:        staffID,
+		SlackChannelID: slackChannelID,
+	}
+}
